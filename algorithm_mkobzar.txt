@@ -5,21 +5,33 @@
     Please personlize the following author declaration:
 -----------------------------------------------------------------------
 OPS435 Assignment 1 - Fall 2020
-Program: a1_[Seneca_name].py (replace [Seneca_name] with your Seneca User name)
-Author: "Student Name"
-The python code in this file (a1_[Seneca_name].py) is original work written by
-"Student Name". No code in this file is copied from any other source 
+Program: a1_mkobzar.py 
+Author: Maxim Kobzar
+The python code in this file (a1_mkobzar.py) is original work written by
+Maxim Kobzar. No code in this file is copied from any other source 
 except those provided by the course instructor, including any person, 
 textbook, or on-line resource. I have not shared this python script 
 with anyone or anything except for submission for grading.  
 I understand that the Academic Honesty Policy will be enforced and 
 violators will be reported and appropriate action will be taken.
 '''
+
+#imports the appropriate modules
 import os
 import sys
 
 def leap_year(obj):
     '''
+	This function will take the year entered and check if it is a leap year.
+	The following rules can be used to determine if the year is a leap year.
+	    1)If the year is evenly divisible by 4, go to step 2. Otherwise, go to step 5.
+        2)If the year is evenly divisible by 100, go to step 3. Otherwise, go to step 4.
+        3)If the year is evenly divisible by 400, go to step 4. Otherwise, go to step 5.
+        4)The year is a leap year (it has 366 days).
+        5)The year is not a leap year (it has 365 days).
+	If the year is equal to a leap year then the function will return
+	a True status. Every other year value will return a False status. 
+	
     put your function level docstring here ...
     '''
     ...
@@ -28,6 +40,11 @@ def leap_year(obj):
 
 def sanitize(obj1,obj2):
     '''
+	Takes in the user raw data and the allowed characters.
+	Loop through the user input and check for any characters that are not in the allowed characters.
+	Remove any characters that are not in the allowed characters.
+	Return the results.
+	
     put your function level docstring here ...
     '''
     ...
@@ -36,6 +53,11 @@ def sanitize(obj1,obj2):
 
 def size_check(obj, intobj):
     '''
+	Takes the sanitized user input and a digit.
+	Find the length of the dob string.
+	If it is equal to the passed digit object then the status is True.
+	If it in not equal then the status is False.
+	
     put your function level docstring here ..
     '''
     ...
@@ -44,6 +66,11 @@ def size_check(obj, intobj):
 
 def range_check(obj1, obj2):
     '''
+	Takes in a value and a range.
+	If the value is less than the minimum of the range then status is False.
+	If the value is more than the maximum of the range then status is False.
+	Anything else the status will be True.
+	
     put your function level docstring here ..
     '''
     ...
@@ -52,52 +79,85 @@ def range_check(obj1, obj2):
     
 def usage():    
     '''
+	Takes no arguments.
+	A general print statement describing on the proper inputs the program expects from the user.
+	Returns the print statement as a status.
+	
     put your function level docstring here ...
     '''
     ...
     return status
 
 if __name__ == "__main__":
-   # step 1
+   # step 1 
+   # checks that the user entered the correct number of arguments if not then display the expected usage and exit.
    if len(sys.argv) != 2:
       usage()
       sys.exit()
    # step 2
+   '''
+   Declare the appropriate lists for the months and the amount of days in each month. Assign the user input to a variable.
+   '''
    month_name = ['Jan','Feb','Mar','Apr','May','Jun',
                  'Jul','Aug','Sep','Oct','Nov','Dec']
    days_in_month = {1:31, 2:28, 3:31, 4:30, 5:31, 6:30,
                     7:31, 8:31, 9:30, 10:31, 11:30, 12:31}
    user_raw_data = sys.argv[1]
    # step 3
+   '''
+   Declare the allowed characters to be used in the sanitize function. Call the sanitize function and pass the raw user input and allowed characters to the sanitize function. Capture the return of the function and assign it to a variable. Display variable that contains the sanitized user input. 
+   '''
    allow_chars = '0123456789'
    dob = sanitize(user_raw_data, allow_chars)
    print('Sanitized user data:', dob)
-   # setp 4
+   # step 4 
+   '''
+   Check if the length of the sanitized user input (dob) is the correct length by passing it along with the expected length to the size_check function. Save the return which is True or False to a variable. If its False then display an error message and exit.
+   '''
    result = size_check(dob,8)
    if result == False:
        print("Error 09: wrong data entered")
        sys.exit()
    # step 5
+   '''
+   Parse and save the sanitized user input into year, month, and day variables. The first 4 chars in dod will be the year the next 2 is the month and the last 2 will be the day. 
+   '''
    year = int(dob[0:4])
    month = int(dob[4:6])
    day = int(dob[6:])
    # step 6
+   '''
+   Check if the year is in range. Call the range_check function and pass the year variable and the expected range of years. Save the return which is True or False to the results variable. If the returned results value is equal to False meaning that the year is out of range then print an error message and exit.
+   '''
    result = range_check(year,(1900,9999))
    if result == False:
        print("Error 10: year out of range, must be 1900 or later")
        sys.exit()
+   '''
+   Check that the month value makes sense. Call the range_check function and pass the month variable and the expected range of month values. Save the return which is True or False to the results variable. If the returned results value is equal to False meaning that the month value is nonsensical and is out of range then print an error message and exit.
+   '''
    result = range_check(month,(1,12))
    if result == False:
        print("Error 02: Wrong month entered")
        sys.exit()
+   '''
+   Check if the year entered is a leap year. Call the leap_year function and pass the year variable to it. Save the return which is True or False to the results variable. If the returned results value is equal to True then  the year entered is a leap year therefore the days in February need to be changed to 29.
+   '''
    result = leap_year(year)
    if result == True:
        days_in_month[2] = 29
+   '''
+   Check if the days in the month are in range. Call the range_check function and pass the day variable and the number of days in the month. Save the return which is True or False to the results variable. If the returned results value is equal to False meaning that the day value is out range in the number of days in that month then print an error message and exit.
+   '''
    result = range_check(day, (1, days_in_month[month]))
    if result == False:
        print("Error 03: wrong day entered")
        sys.exit()
    # step 7
+   '''
+   Cast the year, month, and day into a string. The month value is 1 less than the index value of the month_name list, use this list to turn the month integer value to the month name. Concatenate the strings and save then to a variable, new_dob.
+   '''
    new_dob = str(month_name[month - 1])+' '+ str(day)+', '+str(year)
    # step 8
+   # Print a statement stating that the users birthday is the new_dob value.  
    print("Your date of birth is:", new_dob)  

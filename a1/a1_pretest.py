@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 ''' 
-    put your script level docstring here...
+    This program will take a command line argumnet as a date in the format outlined in usage() and
+    return the date argument in a standard format: 'mmm d, yyyy", where "mmm" is the three letter 
+    abbreviated month's name, 'd' is a one or two-digit day of the month, and 'yyyy' is the four 
+    digit year.
 
 -----------------------------------------------------------------------
 OPS435 Assignment 1 - Fall 2020
 Program: a1_mkobzar.py 
 Author: Maxim Kobzar
 The python code in this file (a1_mkobzar.py) is original work written by
-"Student Name". No code in this file is copied from any other source 
+"Maxim Kobzar". No code in this file is copied from any other source 
 except those provided by the course instructor, including any person, 
 textbook, or on-line resource. I have not shared this python script 
 with anyone or anything except for submission for grading.  
@@ -88,10 +91,11 @@ def range_check(value, range_size):
 
 def usage():
     '''
-    put your function level docstring here ...
+    This function takes no argument and outputs to the standard output, the expected
+    format of the command line argument.
     '''
-    ...
-    #return status
+    print ("Usage: a1_mkobzar.py YYYYMMDD|YYYY/MM/DD|YYYY-MM-DD|YYYY.MM.DD\n")
+    exit()
 
 
 if __name__ == "__main__":
@@ -108,11 +112,11 @@ if __name__ == "__main__":
     # step 3
     allow_chars = '0123456789'
     dob = sanitize(user_raw_data, allow_chars)
-    print('Sanitized user data:', dob)
+    #print('Sanitized user data:', dob)
     # setp 4
     result = size_check(dob, 8)
     if result == False:
-        print("Error 09: wrong data entered")
+        print("Error 09: wrong date entered")
         sys.exit()
     # step 5
     year = int(dob[0:4])
@@ -125,7 +129,7 @@ if __name__ == "__main__":
         sys.exit()
     result = range_check(month, (1, 12))
     if result == False:
-        print("Error 02: Wrong month entered")
+        print("Error 02: wrong month entered")
         sys.exit()
     result = leap_year(year)
     if result == True:
@@ -137,4 +141,6 @@ if __name__ == "__main__":
     # step 7
     new_dob = str(month_name[month - 1]) + ' ' + str(day) + ', ' + str(year)
     # step 8
-    print("Your date of birth is:", new_dob)
+    #print("Your date of birth is:", new_dob)#modified in order to pass checkA1.py script.
+    print(new_dob)
+

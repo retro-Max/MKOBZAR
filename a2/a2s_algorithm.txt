@@ -1,0 +1,65 @@
+from fabric.api import *
+'''
+OPS435 Assignment 2S - Fall 2020
+Program: a2r_mkobzar.py
+Author: Maxim Kobzar
+The python code in this file a2s_mkobzar.py is original work written by
+Maxim Kobzar. No code in this file is copied from any other source 
+including any person, textbook, or on-line resource except those provided
+by the course instructor. I have not shared this python file with anyone
+or anything except for submission for grading.  
+I understand that the Academic Honesty Policy will be enforced and violators 
+will be reported and appropriate action will be taken.
+'''
+
+env.user = "student"
+
+def addUser(name):
+    '''add a user with given user name to remote system'''
+
+Takes 1 argument as a string which is the name of the user being created.
+Save the adduser  'name' command to a variable1. 
+Use the fabric sudo() function on variable1 to execute the adduser command on the remote system that matches the name provided. 
+If the output is that the user already exists then exit the program.
+ 
+def listUser():
+    '''return a list of shell user on a remote system'''
+
+Takes no arguments.
+Save the fabric run(open('/etc/passwd')) to a variable1.
+Use the readlines() method on variable1 and save that to a different variable2.
+Start a for loop on variable2 and cycle through each index looking for '/bin/bash'.
+   Still in the for loop use the count('/bin/bash') method to test if this string exists in each index.
+   If this string exists meaning a count != 0 then save it into a new list1 using the append() method
+Create another for loop to cycle through list1 and use the split(':') method on each index of list1.
+    Save the [0] index from each split to a new list2 using the append() method.
+Return the full list2 as this contains the bash shell users.
+ 
+def listSysUser():
+    '''return a list of system (non-shell) user'''
+
+Takes no arguments.
+Save the run(open('/etc/passwd')) to a variable1.
+Use the readlines() method on variable1 and save that to a different variable2.
+Start a for loop on variable2 and cycle through each index looking for '/sbin/nologin'.
+   Still in the for loop use the count('/bin/nologin') method to test if this string exists in each index.
+   If this string exists meaning a count != 0 then save it into a new list1 using the append() method
+Create another for loop to cycle through list1 and use the split(':') method on each index of list1.
+    Save the [0] index from each split to a new list2 using the append() method.
+Return the full list2 as this contains the system users (non-shell).
+
+def findUser(name):
+    '''find user with a given user name'''
+
+Take 1 argument as the name of the user to search for.
+Save the run(open('/etc/passwd')) to a variable1.
+Use the readlines() method on variable1 and save that to a different variable2.
+Create a for loop to cycle through variable2 and use the split(':') method on each index of variable2.
+    Save the [0] index from each split to a new list1 using the append() method.
+Use the count('name') method on list1.
+    If the count method != 0 then return the string Found user 'name' on the system.
+Return the string User  'name' is not on the system..
+
+
+
+

@@ -17,6 +17,7 @@ will be reported and appropriate action will be taken.
 env.user = 'student'
 env.port = '7517'
 env.hosts = ['myvmlab.senecacollege.ca']
+env.password = '0dc7Rnr*%E'
 
 def addUser(name):
     '''add a user with given user name to remote system'''
@@ -28,26 +29,22 @@ def listUser():
     '''return a list of shell user on a remote system'''
     
 
-    # open file and save to list
+    #save remote file output to list, split by \n.
     file = run('cat /etc/passwd')
     file = file.split('\n')
-    #print file
 
-
-    # test for shell user in list
+    #test for shell users in list
     shell_user = []
     for item in file:
         if item.count("/bin/bash") != 0:
             shell_user.append(item)
-    #print(shell_user)
   
-    # split user info by colon
+    #parse user info.
     parsed_user = []
     for item in shell_user:
         parsed_user.append(item.split(":"))
-    #print(parsed_user)
-
-    # create list of names of users
+    
+    #create list of names of correct users
     name_user = []
     for user in parsed_user:
         name_user.append(user[0])
@@ -57,26 +54,22 @@ def listUser():
 def listSysUser():
     '''return a list of system (non-shell) user'''
     
-
-    # open file and save to list
+    #save remote file output to list, split by \n.
     file = run('cat /etc/passwd')
     file = file.split('\n')
-    #print file
-
-    # test for sys user in list
+    
+    #test for sys user in list.
     sys_user = []
     for item in file:
         if item.count("/sbin/nologin") != 0:
             sys_user.append(item)
-    #print(sys_user)
-    
-    # split user info by colon
+        
+    #parse user info
     parsed_user = []
     for item in sys_user:
         parsed_user.append(item.split(":"))
-    #print(parsed_user)
-    
-    # create list of names of users
+        
+    #create list of correct users
     name_user = []
     for user in parsed_user:
         name_user.append(user[0])
@@ -87,23 +80,21 @@ def listSysUser():
 def findUser(name):
     '''find user with a given user name'''
 
-    # open file and save to list
+    #save remote file output to list, split by \n.
     file = run('cat /etc/passwd')
     file = file.split('\n')
-    #print file
-      
-    # split user info by colon
+        
+    #parse user info.
     parsed_user = []
     for item in file:
         parsed_user.append(item.split(":"))
-    #print(parsed_user)
-    
-    # create list of names of users
+        
+    #create list of all users.
     name_user = []
     for user in parsed_user:
         name_user.append(user[0])
-    #print(name_user)
-
+    
+    #test for the given user.
     try:
         name_user.index(name)
         print('Found user ' + name + ' on the system.')

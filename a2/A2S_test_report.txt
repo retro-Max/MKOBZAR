@@ -1,0 +1,176 @@
+Student: Maxim Kobzar
+
+==== Test 1 ==== Command: fab -l
+
+Available commands:
+
+    addUser      add a user with given user name to remote system
+    findUser     find user with a given user name
+    listSysUser  return a list of system (non-shell) user
+    listUser     return a list of shell user on a remote system
+
+==== Test 2 ==== Command: fab addUser:ops435
+
+ 
+[myvmlab.senecacollege.ca] Executing task 'addUser'
+[myvmlab.senecacollege.ca] sudo: adduser ops435 -m
+[myvmlab.senecacollege.ca] out: sudo password:
+[myvmlab.senecacollege.ca] out: Creating mailbox file: File exists
+[myvmlab.senecacollege.ca] out: 
+
+
+Done.
+Disconnecting from myvmlab.senecacollege.ca:7517... done.
+
+==== Test 3 ==== Command: fab findUser:ops435
+
+[myvmlab.senecacollege.ca] Executing task 'findUser'
+[myvmlab.senecacollege.ca] run: cat /etc/passwd
+[myvmlab.senecacollege.ca] out: root:x:0:0:root:/root:/bin/bash
+[myvmlab.senecacollege.ca] out: bin:x:1:1:bin:/bin:/sbin/nologin
+[myvmlab.senecacollege.ca] out: daemon:x:2:2:daemon:/sbin:/sbin/nologin
+[myvmlab.senecacollege.ca] out: adm:x:3:4:adm:/var/adm:/sbin/nologin
+[myvmlab.senecacollege.ca] out: lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+[myvmlab.senecacollege.ca] out: sync:x:5:0:sync:/sbin:/bin/sync
+[myvmlab.senecacollege.ca] out: shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+[myvmlab.senecacollege.ca] out: halt:x:7:0:halt:/sbin:/sbin/halt
+[myvmlab.senecacollege.ca] out: mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+[myvmlab.senecacollege.ca] out: operator:x:11:0:operator:/root:/sbin/nologin
+[myvmlab.senecacollege.ca] out: games:x:12:100:games:/usr/games:/sbin/nologin
+[myvmlab.senecacollege.ca] out: ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+[myvmlab.senecacollege.ca] out: nobody:x:99:99:Nobody:/:/sbin/nologin
+[myvmlab.senecacollege.ca] out: systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+[myvmlab.senecacollege.ca] out: dbus:x:81:81:System message bus:/:/sbin/nologin
+[myvmlab.senecacollege.ca] out: polkitd:x:999:998:User for polkitd:/:/sbin/nologin
+[myvmlab.senecacollege.ca] out: sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+[myvmlab.senecacollege.ca] out: postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+[myvmlab.senecacollege.ca] out: chrony:x:998:996::/var/lib/chrony:/sbin/nologin
+[myvmlab.senecacollege.ca] out: ntp:x:38:38::/etc/ntp:/sbin/nologin
+[myvmlab.senecacollege.ca] out: itsadmin:x:1001:100::/home/itsadmin:/bin/bash
+[myvmlab.senecacollege.ca] out: student:x:1002:1002::/home/student:/bin/bash
+[myvmlab.senecacollege.ca] out: instructor:x:1003:1003::/home/instructor:/bin/bash
+[myvmlab.senecacollege.ca] out: ops435p:x:1004:10::/home/ops435p:/bin/bash
+[myvmlab.senecacollege.ca] out: max:x:1005:1005::/home/max:/bin/bash
+[myvmlab.senecacollege.ca] out: ops435:x:1006:1006::/home/ops435:/bin/bash
+[myvmlab.senecacollege.ca] out: 
+
+Found user ops435 on the system.
+
+Done.
+Disconnecting from myvmlab.senecacollege.ca:7517... done.
+
+==== Test 4 ==== Command: fab findUser:seneca
+
+[myvmlab.senecacollege.ca] Executing task 'findUser'
+[myvmlab.senecacollege.ca] run: cat /etc/passwd
+[myvmlab.senecacollege.ca] out: root:x:0:0:root:/root:/bin/bash
+[myvmlab.senecacollege.ca] out: bin:x:1:1:bin:/bin:/sbin/nologin
+[myvmlab.senecacollege.ca] out: daemon:x:2:2:daemon:/sbin:/sbin/nologin
+[myvmlab.senecacollege.ca] out: adm:x:3:4:adm:/var/adm:/sbin/nologin
+[myvmlab.senecacollege.ca] out: lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+[myvmlab.senecacollege.ca] out: sync:x:5:0:sync:/sbin:/bin/sync
+[myvmlab.senecacollege.ca] out: shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+[myvmlab.senecacollege.ca] out: halt:x:7:0:halt:/sbin:/sbin/halt
+[myvmlab.senecacollege.ca] out: mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+[myvmlab.senecacollege.ca] out: operator:x:11:0:operator:/root:/sbin/nologin
+[myvmlab.senecacollege.ca] out: games:x:12:100:games:/usr/games:/sbin/nologin
+[myvmlab.senecacollege.ca] out: ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+[myvmlab.senecacollege.ca] out: nobody:x:99:99:Nobody:/:/sbin/nologin
+[myvmlab.senecacollege.ca] out: systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+[myvmlab.senecacollege.ca] out: dbus:x:81:81:System message bus:/:/sbin/nologin
+[myvmlab.senecacollege.ca] out: polkitd:x:999:998:User for polkitd:/:/sbin/nologin
+[myvmlab.senecacollege.ca] out: sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+[myvmlab.senecacollege.ca] out: postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+[myvmlab.senecacollege.ca] out: chrony:x:998:996::/var/lib/chrony:/sbin/nologin
+[myvmlab.senecacollege.ca] out: ntp:x:38:38::/etc/ntp:/sbin/nologin
+[myvmlab.senecacollege.ca] out: itsadmin:x:1001:100::/home/itsadmin:/bin/bash
+[myvmlab.senecacollege.ca] out: student:x:1002:1002::/home/student:/bin/bash
+[myvmlab.senecacollege.ca] out: instructor:x:1003:1003::/home/instructor:/bin/bash
+[myvmlab.senecacollege.ca] out: ops435p:x:1004:10::/home/ops435p:/bin/bash
+[myvmlab.senecacollege.ca] out: max:x:1005:1005::/home/max:/bin/bash
+[myvmlab.senecacollege.ca] out: ops435:x:1006:1006::/home/ops435:/bin/bash
+[myvmlab.senecacollege.ca] out: 
+
+User seneca not on the system.
+
+Done.
+Disconnecting from myvmlab.senecacollege.ca:7517... done.
+
+==== Test 5 ==== Command: fab listUser
+
+
+[myvmlab.senecacollege.ca] Executing task 'listUser'
+[myvmlab.senecacollege.ca] run: cat /etc/passwd
+[myvmlab.senecacollege.ca] out: root:x:0:0:root:/root:/bin/bash
+[myvmlab.senecacollege.ca] out: bin:x:1:1:bin:/bin:/sbin/nologin
+[myvmlab.senecacollege.ca] out: daemon:x:2:2:daemon:/sbin:/sbin/nologin
+[myvmlab.senecacollege.ca] out: adm:x:3:4:adm:/var/adm:/sbin/nologin
+[myvmlab.senecacollege.ca] out: lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+[myvmlab.senecacollege.ca] out: sync:x:5:0:sync:/sbin:/bin/sync
+[myvmlab.senecacollege.ca] out: shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+[myvmlab.senecacollege.ca] out: halt:x:7:0:halt:/sbin:/sbin/halt
+[myvmlab.senecacollege.ca] out: mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+[myvmlab.senecacollege.ca] out: operator:x:11:0:operator:/root:/sbin/nologin
+[myvmlab.senecacollege.ca] out: games:x:12:100:games:/usr/games:/sbin/nologin
+[myvmlab.senecacollege.ca] out: ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+[myvmlab.senecacollege.ca] out: nobody:x:99:99:Nobody:/:/sbin/nologin
+[myvmlab.senecacollege.ca] out: systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+[myvmlab.senecacollege.ca] out: dbus:x:81:81:System message bus:/:/sbin/nologin
+[myvmlab.senecacollege.ca] out: polkitd:x:999:998:User for polkitd:/:/sbin/nologin
+[myvmlab.senecacollege.ca] out: sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+[myvmlab.senecacollege.ca] out: postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+[myvmlab.senecacollege.ca] out: chrony:x:998:996::/var/lib/chrony:/sbin/nologin
+[myvmlab.senecacollege.ca] out: ntp:x:38:38::/etc/ntp:/sbin/nologin
+[myvmlab.senecacollege.ca] out: itsadmin:x:1001:100::/home/itsadmin:/bin/bash
+[myvmlab.senecacollege.ca] out: student:x:1002:1002::/home/student:/bin/bash
+[myvmlab.senecacollege.ca] out: instructor:x:1003:1003::/home/instructor:/bin/bash
+[myvmlab.senecacollege.ca] out: ops435p:x:1004:10::/home/ops435p:/bin/bash
+[myvmlab.senecacollege.ca] out: max:x:1005:1005::/home/max:/bin/bash
+[myvmlab.senecacollege.ca] out: ops435:x:1006:1006::/home/ops435:/bin/bash
+[myvmlab.senecacollege.ca] out: 
+
+['root', 'itsadmin', 'student', 'instructor', 'ops435p', 'max', 'ops435']
+
+Done.
+Disconnecting from myvmlab.senecacollege.ca:7517... done.
+
+==== Test 6 ==== Command: fab listSysUser
+
+[myvmlab.senecacollege.ca] Executing task 'listSysUser'
+[myvmlab.senecacollege.ca] run: cat /etc/passwd
+[myvmlab.senecacollege.ca] out: root:x:0:0:root:/root:/bin/bash
+[myvmlab.senecacollege.ca] out: bin:x:1:1:bin:/bin:/sbin/nologin
+[myvmlab.senecacollege.ca] out: daemon:x:2:2:daemon:/sbin:/sbin/nologin
+[myvmlab.senecacollege.ca] out: adm:x:3:4:adm:/var/adm:/sbin/nologin
+[myvmlab.senecacollege.ca] out: lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+[myvmlab.senecacollege.ca] out: sync:x:5:0:sync:/sbin:/bin/sync
+[myvmlab.senecacollege.ca] out: shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+[myvmlab.senecacollege.ca] out: halt:x:7:0:halt:/sbin:/sbin/halt
+[myvmlab.senecacollege.ca] out: mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+[myvmlab.senecacollege.ca] out: operator:x:11:0:operator:/root:/sbin/nologin
+[myvmlab.senecacollege.ca] out: games:x:12:100:games:/usr/games:/sbin/nologin
+[myvmlab.senecacollege.ca] out: ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+[myvmlab.senecacollege.ca] out: nobody:x:99:99:Nobody:/:/sbin/nologin
+[myvmlab.senecacollege.ca] out: systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+[myvmlab.senecacollege.ca] out: dbus:x:81:81:System message bus:/:/sbin/nologin
+[myvmlab.senecacollege.ca] out: polkitd:x:999:998:User for polkitd:/:/sbin/nologin
+[myvmlab.senecacollege.ca] out: sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+[myvmlab.senecacollege.ca] out: postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+[myvmlab.senecacollege.ca] out: chrony:x:998:996::/var/lib/chrony:/sbin/nologin
+[myvmlab.senecacollege.ca] out: ntp:x:38:38::/etc/ntp:/sbin/nologin
+[myvmlab.senecacollege.ca] out: itsadmin:x:1001:100::/home/itsadmin:/bin/bash
+[myvmlab.senecacollege.ca] out: student:x:1002:1002::/home/student:/bin/bash
+[myvmlab.senecacollege.ca] out: instructor:x:1003:1003::/home/instructor:/bin/bash
+[myvmlab.senecacollege.ca] out: ops435p:x:1004:10::/home/ops435p:/bin/bash
+[myvmlab.senecacollege.ca] out: max:x:1005:1005::/home/max:/bin/bash
+[myvmlab.senecacollege.ca] out: ops435:x:1006:1006::/home/ops435:/bin/bash
+[myvmlab.senecacollege.ca] out: 
+
+['bin', 'daemon', 'adm', 'lp', 'mail', 'operator', 'games', 'ftp', 'nobody', 'systemd-network', 'dbus', 'polkitd', 'sshd', 'postfix', 'chrony', 'ntp']
+
+Done.
+Disconnecting from myvmlab.senecacollege.ca:7517... done
+
+==== END ====
+
+.

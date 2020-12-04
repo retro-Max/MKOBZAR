@@ -21,7 +21,7 @@ env.hosts = ['myvmlab.senecacollege.ca']
 def addUser(name):
     '''add a user with given user name to remote system'''
     
-    cmd1 = 'adduser' + name + '-m -g wheel'
+    cmd1 = 'adduser ' + name + ' -m'
     sudo(cmd1)
 
 def listUser():
@@ -31,7 +31,7 @@ def listUser():
     # open file and save to list
     file = run('cat /etc/passwd')
     file = file.split('\n')
-    print file
+    #print file
 
 
     # test for shell user in list
@@ -39,13 +39,13 @@ def listUser():
     for item in file:
         if item.count("/bin/bash") != 0:
             shell_user.append(item)
-    print(shell_user)
+    #print(shell_user)
   
     # split user info by colon
     parsed_user = []
     for item in shell_user:
         parsed_user.append(item.split(":"))
-    print(parsed_user)
+    #print(parsed_user)
 
     # create list of names of users
     name_user = []
@@ -61,20 +61,20 @@ def listSysUser():
     # open file and save to list
     file = run('cat /etc/passwd')
     file = file.split('\n')
-    print file
+    #print file
 
     # test for sys user in list
     sys_user = []
     for item in file:
         if item.count("/sbin/nologin") != 0:
             sys_user.append(item)
-    print(sys_user)
+    #print(sys_user)
     
     # split user info by colon
     parsed_user = []
     for item in sys_user:
         parsed_user.append(item.split(":"))
-    print(parsed_user)
+    #print(parsed_user)
     
     # create list of names of users
     name_user = []
@@ -86,5 +86,33 @@ def listSysUser():
 
 def findUser(name):
     '''find user with a given user name'''
+
+    # open file and save to list
+    file = run('cat /etc/passwd')
+    file = file.split('\n')
+    #print file
+      
+    # split user info by colon
+    parsed_user = []
+    for item in file:
+        parsed_user.append(item.split(":"))
+    #print(parsed_user)
+    
+    # create list of names of users
+    name_user = []
+    for user in parsed_user:
+        name_user.append(user[0])
+    #print(name_user)
+
+    try:
+        name_user.index(name)
+        print('Found user ' + name + ' on the system.')
+    
+    except ValueError:
+        print('User ' + name + ' not on the system.')
+           
+    
+
+
     
 
